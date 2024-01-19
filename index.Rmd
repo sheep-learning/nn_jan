@@ -76,8 +76,7 @@ results <- pivot_longer(raw,-c(1:2), values_transform = as.character) %>%
 ```
 
 # Day 1
-##### **Car: `r raw$Car_1[1]`**
-##### **Track: `r raw$Track_1[1]`**
+##### **Car: `r raw$Car_1[1]`** <br> **Track: `r raw$Track_1[1]`**
 
 
 Column 
@@ -104,8 +103,8 @@ kable(tmp)
 ```
 
 # Day 2
-##### Car: `r raw$Car_2[1]`
-##### Track: `r raw$Track_2[1]`
+##### **Car: `r raw$Car_2[1]`** <br> **Track: `r raw$Track_2[1]`**
+
 
 
 Column 
@@ -133,8 +132,8 @@ kable(tmp)
 
 # Day 3
 
-##### Car: `r raw$Car_3[1]`
-##### Track: `r raw$Track_3[1]`
+##### **Car: `r raw$Car_3[1]`** <br> **Track: `r raw$Track_3[1]`**
+
 
 
 Column 
@@ -186,9 +185,9 @@ ggplot(tmp, aes(Time,Player,fill=Player)) +
            label=paste0(format(rev(tmp$Time),nsmall=2),'s'))
 ```
 
-Column 
+Column {data-width=200}
 --------------
-### Final Standings: DW Scoring
+### Final Standings: DW Scoring 
 ```{r}
 # Table of overall player rankings
 kable(tmp %>%
@@ -198,9 +197,9 @@ kable(tmp %>%
         )
 ```
 
-Column 
+Column {data-width=200}
 --------------
-### Final Standings: Reverse Scoring
+### Final Standings: Reverse Scoring 
 ```{r}
 # Table of overall player rankings
 kable(tmp %>%
