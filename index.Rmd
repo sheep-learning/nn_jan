@@ -55,7 +55,7 @@ h2h_df <- function(x,d){
 
 indiv_df <- function(x,d){
   filter(x,Day==d & !is.na(Time)) %>%
-  select(Rank,Player,Time) %>% 
+  select(Rank,Player,Time,`DW Points`=dw_pts,`Reverse Points`=rev_pts) %>% 
   mutate(Player=fct_reorder(Player,-Rank))
 }
 ```
@@ -94,7 +94,7 @@ ggplot(tmp, aes(Time,Player,fill=Player)) +
            label=paste0(format(rev(tmp$Time),nsmall=2),'s'))
 ```
 
-Column 
+Column {data-width=400}
 --------------
 ### Leaderboard 
 ```{r}
@@ -118,11 +118,11 @@ ggplot(tmp, aes(Time,Player,fill=Player)) +
   scale_fill_manual(values = pal(nrow(tmp))) +
   coord_cartesian(xlim=c(min(tmp$Time)*.999,max(tmp$Time)**1.002)) +
   theme_blank() + 
-  annotate('text', x=rev(tmp$Time)+.04, y=1:length(tmp$Time), 
+  annotate('text', x=rev(tmp$Time)+.045, y=1:length(tmp$Time), 
            label=paste0(format(rev(tmp$Time),nsmall=2),'s'))
 ```
 
-Column 
+Column {data-width=400}
 --------------
 ### Leaderboard 
 ```{r}
@@ -147,11 +147,11 @@ ggplot(tmp, aes(Time,Player,fill=Player)) +
   scale_fill_manual(values = pal(nrow(tmp))) +
   coord_cartesian(xlim=c(min(tmp$Time)*.999,max(tmp$Time)**1.002)) +
   theme_blank() + 
-  annotate('text', x=rev(tmp$Time)+.04, y=1:length(tmp$Time), 
+  annotate('text', x=rev(tmp$Time)+.125, y=1:length(tmp$Time), 
            label=paste0(format(rev(tmp$Time),nsmall=2),'s'))
 ```
 
-Column 
+Column {data-width=400}
 --------------
 ### Leaderboard 
 ```{r}
@@ -160,7 +160,6 @@ kable(tmp)
 ```
 
 # Final Standings 
-##### <br>
 
 Column 
 --------------
@@ -184,7 +183,7 @@ ggplot(tmp, aes(Time,Player,fill=Player)) +
   scale_fill_manual(values = pal(nrow(tmp))) +
   coord_cartesian(xlim=c(min(tmp$Time)*.999,max(tmp$Time)**1.002)) +
   theme_blank() + 
-  annotate('text', x=rev(tmp$Time)+.04, y=1:length(tmp$Time), 
+  annotate('text', x=rev(tmp$Time)+.065, y=1:length(tmp$Time), 
            label=paste0(format(rev(tmp$Time),nsmall=2),'s'))
 ```
 
