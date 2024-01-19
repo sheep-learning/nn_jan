@@ -160,20 +160,23 @@ kable(tmp)
 ```
 
 # Final Standings 
+##### <br>
 
 Column 
 --------------
 ### Average Time 
 ```{r}
-tmp <- results %>%
+tmp2 <- results %>%
     select(Player,Time,Day,rev_pts,dw_pts) %>% 
     group_by(Player) %>%
-    summarise(Time = sum(Time)/3,
+    summarise(Time = round(sum(Time)/3,2),
               `DW Points`=sum(dw_pts),
               `Reverse Points`=sum(rev_pts)) %>%
     arrange(Time) %>%
     mutate(Rank = 1:nrow(.),.before = Player,
-           Player=fct_reorder(Player,-Rank))
+           Player=fct_reorder(Player,-Rank)) 
+
+tmp <- filter(tmp2, !is.na(Time))
 
 # plot performance
 ggplot(tmp, aes(Time,Player,fill=Player)) +
@@ -190,10 +193,10 @@ Column {data-width=200}
 ### Final Standings: DW Scoring 
 ```{r}
 # Table of overall player rankings
-kable(tmp %>%
+kable(tmp2 %>%
         select(Player, `DW Points`) %>%
         arrange(desc(`DW Points`)) %>%
-        mutate(Rank = 1:nrow(tmp),.before=1)
+        mutate(Rank = 1:nrow(tmp2),.before=1)
         )
 ```
 
@@ -202,10 +205,10 @@ Column {data-width=200}
 ### Final Standings: Reverse Scoring 
 ```{r}
 # Table of overall player rankings
-kable(tmp %>%
+kable(tmp2 %>%
         select(Player, `Reverse Points`) %>%
         arrange(desc(`Reverse Points`)) %>%
-        mutate(Rank = 1:nrow(tmp),.before=1)
+        mutate(Rank = 1:nrow(tmp2),.before=1)
         )
 ```
 
